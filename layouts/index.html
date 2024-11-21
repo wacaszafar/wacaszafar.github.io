@@ -18,14 +18,16 @@
 
     <!-- Secondary Posts -->
     <div class="secondary-posts">
-        {{ range first 4 (after 1 (where .Site.RegularPages "Type" "posts")) }}
+        {{ range first 4 (where .Site.RegularPages "Type" "posts") }}
         <article class="post-card">
             {{ if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}">
             {{ end }}
-            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Summary }}</p>
-            <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+            <div class="content">
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p>{{ .Summary }}</p>
+                <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+            </div>
         </article>
         {{ end }}
     </div>
