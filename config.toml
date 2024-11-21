@@ -1,0 +1,46 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'en-us'
+title = 'ProPakistani'
+theme = 'paper'
+
+[params]
+  # Site Description
+  description = "Pakistan's Largest Digital News Platform"
+  author = "ProPakistani"
+  
+  # Theme Settings
+  color = "dark"
+  
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Technology"
+    url = "/technology/"
+    weight = 2
+  [[menu.main]]
+    name = "Business"
+    url = "/business/"
+    weight = 3
+  [[menu.main]]
+    name = "Auto"
+    url = "/auto/"
+    weight = 4
+  [[menu.main]]
+    name = "Telecom"
+    url = "/telecom/"
+    weight = 5
+  [[menu.main]]
+    name = "Sports"
+    url = "/sports/"
+    weight = 6
+  [[menu.main]]
+    name = "Education"
+    url = "/education/"
+    weight = 7
+  [[menu.main]]
+    name = "Finance"
+    url = "/finance/"
+    weight = 8

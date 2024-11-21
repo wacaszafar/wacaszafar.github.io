@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="home-container">
+    <!-- Featured Post -->
+    {{ range first 1 (where .Site.RegularPages "Type" "posts") }}
+    <article class="featured-post">
+        {{ if .Params.image }}
+        <div class="image-container">
+            <img src="{{ .Params.image }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+        <div class="content">
+            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <p>{{ .Summary }}</p>
+            <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+        </div>
+    </article>
+    {{ end }}
+
+    <!-- Secondary Posts -->
+    <div class="secondary-posts">
+        {{ range first 4 (after 1 (where .Site.RegularPages "Type" "posts")) }}
+        <article class="post-card">
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}">
+            {{ end }}
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Summary }}</p>
+            <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
