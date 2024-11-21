@@ -1,29 +1,40 @@
 {{ define "main" }}
 <div class="home-container">
     <!-- Featured Post -->
-    {{ range first 1 (where .Site.RegularPages "Type" "posts") }}
-    <article class="featured-post">
-        {{ if .Params.image }}
-        <div class="image-container">
-            <img src="{{ .Params.image }}" alt="{{ .Title }}">
-        </div>
-        {{ end }}
-        <div class="content">
-            <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-            <p>{{ .Summary }}</p>
-            <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
-        </div>
-    </article>
-    {{ end }}
-
-    <!-- Secondary Posts -->
-    <div class="secondary-posts">
-        {{ range first 4 (where .Site.RegularPages "Type" "posts") }}
-        <article class="post-card">
+    <div class="featured-section">
+        {{ range first 1 (where .Site.RegularPages "Type" "posts") }}
+        <article class="main-featured">
             {{ if .Params.image }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}">
             {{ end }}
-            <div class="content">
+            <div class="featured-content">
+                <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+                <p>{{ .Summary }}</p>
+                <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
+            </div>
+        </article>
+        {{ end }}
+        
+        <div class="side-featured">
+            {{ range first 2 (after 1 (where .Site.RegularPages "Type" "posts")) }}
+            <article class="side-post">
+                {{ if .Params.image }}
+                <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                {{ end }}
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            </article>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- News Grid -->
+    <div class="news-grid">
+        {{ range first 6 (after 3 (where .Site.RegularPages "Type" "posts")) }}
+        <article class="grid-item">
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}">
+            {{ end }}
+            <div class="grid-content">
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Summary }}</p>
                 <a href="{{ .RelPermalink }}" class="read-more">Read More →</a>
